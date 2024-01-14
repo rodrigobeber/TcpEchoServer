@@ -96,9 +96,9 @@ void Server::run() {
     }
 
     #ifdef USE_XOR_CIPHER
-        std::cout << "Decryption enabled!" << std::endl;
+    std::cout << "Decryption enabled!" << std::endl;
     #else
-        std::cout << "Decryption disabled." << std::endl;
+    std::cout << "Decryption disabled." << std::endl;
     #endif
 
     acceptConnections();

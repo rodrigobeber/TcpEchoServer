@@ -83,12 +83,17 @@ int main() {
         close(sock);
         return 1;
     }
-    std::cout << "Login successful." << std::endl << std::endl;
+    std::cout << "Login successful." << std::endl;
 
     #ifdef USE_XOR_CIPHER
-        XORCipher cipher;
-        cipher.calculatePartialInitialKey(loginRequest.username, loginRequest.password);
+    XORCipher cipher;
+    cipher.calculatePartialInitialKey(loginRequest.username, loginRequest.password);
+    std::cout << "Encryption enabled." << std::endl;
+    #else
+    std::cout << "Encryption disabled." << std::endl;
     #endif
+
+    std::cout << std::endl;
 
     // Function to send an echo request and receive a response
     auto sendEchoRequest = [&](const std::string& message) {
@@ -103,7 +108,7 @@ int main() {
         EchoMessageHandler::print(echoRequest);
 
         #ifdef USE_XOR_CIPHER
-            echoRequest.message = cipher.encrypt(std::vector<uint8_t>(message.begin(), message.end()), echoRequest.header.requestSequence);
+        echoRequest.message = cipher.encrypt(std::vector<uint8_t>(message.begin(), message.end()), echoRequest.header.requestSequence);
         #endif
 
         echoRequest.messageSize = echoRequest.message.size();

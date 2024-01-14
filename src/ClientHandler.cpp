@@ -43,9 +43,9 @@ void ClientHandler::handle() {
 
         // If enabled encryption, decrypt
         #ifdef USE_XOR_CIPHER
-            response.message = cipher.decrypt(request.message, request.header.requestSequence);
+        response.message = cipher.decrypt(request.message, request.header.requestSequence);
         #else
-            response.message = request.message;
+        response.message = request.message;
         #endif
 
         // Finish preparing response
