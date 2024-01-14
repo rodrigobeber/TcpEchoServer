@@ -1,0 +1,2 @@
+#!/bin/bash
+g++ -g -I../include client.cpp ../src/EchoMessageHandler.cpp ../src/Protocol.cpp ../src/Connection.cpp ../src/XORCipher.cpp -o client
