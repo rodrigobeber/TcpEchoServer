@@ -16,7 +16,7 @@ OperationStatus Connection::receiveData(int socket, std::vector<uint8_t>& buffer
             std::cerr << "Error reading from socket: " << strerror(errno) << std::endl;
             return OperationStatus::Error;
         } else if (bytesRead == 0) {
-            std::cerr << "Connection closed by the peer." << std::endl;
+            std::cerr << "Connection closed by the peer for socket " << socket << std::endl;
             return OperationStatus::ConnectionClosed;
         }
 
@@ -24,7 +24,7 @@ OperationStatus Connection::receiveData(int socket, std::vector<uint8_t>& buffer
     }
 
     if (totalBytesRead < buffer.size()) {
-        std::cerr << "Partial data received." << std::endl;
+        std::cerr << "Partial data received" << std::endl;
         return OperationStatus::Partial;
     }
 
@@ -40,12 +40,11 @@ OperationStatus Connection::sendData(int socket, const std::vector<uint8_t>& buf
             std::cerr << "Error sending data: " << strerror(errno) << std::endl;
             return OperationStatus::Error;
         } else if (bytesSent == 0) {
-            std::cerr << "Connection closed by the peer." << std::endl;
+            std::cerr << "Connection closed by the peer for socket " << socket << std::endl;
             return OperationStatus::ConnectionClosed;
         }
 
         totalBytesSent += bytesSent;
     }
-
     return OperationStatus::Success;
 }

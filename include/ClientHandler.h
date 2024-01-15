@@ -1,13 +1,18 @@
 #pragma once
 
+#include <atomic>
 #include "XORCipher.h"
 
 class ClientHandler {
 private:
-    int client_socket;
+    int clientSocket;
     XORCipher cipher;
+    bool handleLogin();
+    bool handleEchoRequest();
 public:
-    ClientHandler(int client_socket);
+    ClientHandler(int clientSocket);
     ~ClientHandler();
-    void handle();
+    bool isLoggedIn;
+    bool isProcessing;
+    bool processRequest();
 };

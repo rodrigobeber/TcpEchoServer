@@ -36,7 +36,7 @@ std::vector<uint8_t> XORCipher::decrypt(const std::vector<uint8_t>& ciphertext, 
     return plaintext;
 }
 
-// For the client program
+// I used thos one for a client test program
 std::vector<uint8_t> XORCipher::encrypt(const std::vector<uint8_t>& plaintext, unsigned messageSequence) {
     std::vector<uint8_t> ciphertext;
     uint32_t initialKey = (messageSequence << 16) | partialInitialKey;

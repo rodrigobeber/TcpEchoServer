@@ -17,6 +17,7 @@ ThreadPool::~ThreadPool() {
     }
 }
 
+// Get pool size
 size_t ThreadPool::getThreadCount() const {
     return workers.size();
 }

@@ -22,7 +22,7 @@ private:
     // Internal signal to graceful stop the tasks
     bool processStop;
 
-    // Executed by each thread, loop trying to assign and process tasks until the stop signal
+    // Executed by each thread, loop trying to assign and process an available task
     void processTasks();
 public:
     ThreadPool(size_t threads);

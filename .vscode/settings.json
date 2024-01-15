@@ -66,6 +66,8 @@
         "timer": "cpp",
         "future": "cpp",
         "sstream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "unordered_set": "cpp",
+        "shared_mutex": "cpp"
     }
 }

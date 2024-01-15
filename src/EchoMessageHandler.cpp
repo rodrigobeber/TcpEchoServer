@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdexcept>
 #include <cstring>
 #include "EchoMessageHandler.h"
 
@@ -37,10 +36,12 @@ void EchoMessageHandler::serialize(const EchoMessage& echoRequest, std::vector<u
     }
 }
 
+// Used by a client test program for debugging
 std::string EchoMessageHandler::getStringMessage(const EchoMessage& echoRequest) {
     return std::string(echoRequest.message.begin(), echoRequest.message.end());
 }
 
+// Used by a client test program for debugging
 void EchoMessageHandler::print(const EchoMessage &echoRequest) {
     std::cout << "Echo "
                 << (echoRequest.header.requestType == 2 ? "Request"

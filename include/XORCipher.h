@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#define USE_XOR_CIPHER // comment this line to disable decryption
+#define USE_XOR_CIPHER // Comment this line to disable decryption
 
 class XORCipher {
 private:
