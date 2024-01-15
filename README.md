@@ -25,3 +25,7 @@ NOTES
 * The default thread pool size is the number of CPU cores available. You can change it in main.cpp
 * The default is to decrypt echo request messages. To disable decryption, comment "#define USE_XOR_CIPHER" in XORCipher.h
 
+COMPILE & TEST
+--------------
+* Build and run the server: in the main project dir exec: mkdir build ; cd build ; cmake .. ; make ; ./echo-server
+* Build and run my client test: in the main project dir exec: cd test ; ./make-client ; ./client
