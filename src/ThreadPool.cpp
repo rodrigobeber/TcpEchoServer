@@ -7,7 +7,7 @@ ThreadPool::ThreadPool(size_t threads) : processStop(false) {
     }
 }
 
-// Destructor, join the threads
+// Destructor, join the threads (wait them to finish)
 ThreadPool::~ThreadPool() {
     stop();
     for (std::thread &worker : workers) {
@@ -48,7 +48,7 @@ void ThreadPool::processTasks() {
         std::function<void()> task;
         {
             std::unique_lock<std::mutex> lock(queue_mutex);
-            // Wait for having a task or for the stop signal
+            // Wait for having a task or for the stop signal (if wait, queue_mutex is released)
             this->taskCondition.wait(lock, [this] { return this->processStop || !this->tasks.empty(); });
             // Graceful stop (will process all tasks first)
             if (this->processStop && this->tasks.empty()) {

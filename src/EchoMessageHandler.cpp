@@ -13,6 +13,7 @@ void EchoMessageHandler::deserialize(const std::vector<uint8_t>& requestData, Ec
     std::memcpy(&echoRequest.messageSize, requestData.data() + sizeof(Header), sizeof(unsigned));
 
     // The rest of the data is the cipherMessage
+    // Use assign for correct container allocation in the message
     echoRequest.message.assign(
         requestData.begin() + sizeof(Header) + sizeof(unsigned),
         requestData.end()

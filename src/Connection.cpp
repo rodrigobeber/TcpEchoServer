@@ -23,11 +23,6 @@ OperationStatus Connection::receiveData(int socket, std::vector<uint8_t>& buffer
         totalBytesRead += bytesRead;
     }
 
-    if (totalBytesRead < buffer.size()) {
-        std::cerr << "Partial data received" << std::endl;
-        return OperationStatus::Partial;
-    }
-
     return OperationStatus::Success;
 }
 

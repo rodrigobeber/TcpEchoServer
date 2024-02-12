@@ -4,7 +4,6 @@
 
 enum class OperationStatus {
     Success,
-    Partial,
     Error,
     ConnectionClosed
 };
